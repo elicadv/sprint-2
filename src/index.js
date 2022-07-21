@@ -1,15 +1,13 @@
 import express from 'express'
-import tarefaController from './controller/tarefa-controller.js'
+import Dicas from "./controller/tarefa-controller.js"
+import banco from './database/bd.js'
 
-const app = express()
 const port = 3000
+const app = express()
 
-// middlewares
-app.use(express.json()) // middleware que faz o parse do json do body
+app.use(express.json())
+Dicas(app,banco)
 
-tarefaController(app)
-
-
-app.listen(port, ()=>{
-    console.log(`http://localhost:${port}/`)
+app.listen(port, () => {
+    console.log(`http://localhost:${port}`)
 })
